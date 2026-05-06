@@ -8,7 +8,7 @@ public class VaccineRequestDTO {
     private String name;
 
     @PositiveOrZero(message = "Dose Interval must be at least 0")
-    private int doseInterval;
+    private Integer doseInterval;
 
     @Min(value = 1, message = "At least one item is required for initial stock")
     private int dosesReceived;
@@ -25,7 +25,7 @@ public class VaccineRequestDTO {
         return name;
     }
 
-    public int getDoseInterval() {
+    public Integer getDoseInterval() {
         return doseInterval;
     }
 

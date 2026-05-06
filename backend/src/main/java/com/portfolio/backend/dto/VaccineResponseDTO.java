@@ -6,7 +6,7 @@ public class VaccineResponseDTO {
     private int id;
     private String vaccineName;
     private int dosesRequired;
-    private int doseInterval;
+    private Integer doseInterval;
     private int totalDosesReceived;
     private int quantityRemaining;
 
@@ -26,7 +26,7 @@ public class VaccineResponseDTO {
         return dto;
     }
 
-    //Getters
+    //Response DTO only needs getters
     public String getVaccineName() {
         return vaccineName;
     }
@@ -35,7 +35,7 @@ public class VaccineResponseDTO {
         return dosesRequired;
     }
 
-    public int getDoseInterval() {
+    public Integer getDoseInterval() {
         return doseInterval;
     }
 

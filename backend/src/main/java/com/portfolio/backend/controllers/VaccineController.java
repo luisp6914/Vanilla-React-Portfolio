@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/vaccines")
+@RequestMapping("/api/v1/vaccines")
 public class VaccineController {
     //Field
     private final VaccineService vaccineService;
@@ -23,12 +23,12 @@ public class VaccineController {
     /**
      * Method passes the current page to the service in order to get back a list of vaccines, or it defaults to the first
      * page if nothing is passed.
-     * @param page the current page
+     * @param currentPage the current page
      * @return list of vaccines, total pages, and the current page.
      */
     @GetMapping
-    public ResponseEntity<VaccinePageResponseDTO> listVaccines(@RequestParam(defaultValue = "0") int page){
-        return ResponseEntity.ok(vaccineService.listVaccines(page));
+    public ResponseEntity<VaccinePageResponseDTO> listVaccines(@RequestParam(defaultValue = "0") int currentPage){
+        return ResponseEntity.ok(vaccineService.listVaccines(currentPage));
     }
 
     /**

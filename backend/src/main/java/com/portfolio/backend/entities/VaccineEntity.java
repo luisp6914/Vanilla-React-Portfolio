@@ -17,7 +17,7 @@ public class VaccineEntity {
     private int dosesRequired;
 
     @Column(name = "dose_interval")
-    private int doseInterval;
+    private Integer doseInterval;
 
     @Column(name = "total_doses_received")
     private int totalDosesReceived;
@@ -34,7 +34,7 @@ public class VaccineEntity {
     public VaccineEntity(){}
 
     //All args constructor for creating a new vaccine
-    public VaccineEntity(String vaccineName, int dosesRequired, int doseInterval, int totalDosesReceived, int quantityRemaining) {
+    public VaccineEntity(String vaccineName, int dosesRequired, Integer doseInterval, int totalDosesReceived, int quantityRemaining) {
         this.vaccineName = vaccineName;
         this.dosesRequired = dosesRequired;
         this.doseInterval = doseInterval;
@@ -55,7 +55,7 @@ public class VaccineEntity {
         return dosesRequired;
     }
 
-    public int getDoseInterval() {
+    public Integer getDoseInterval() {
         return doseInterval;
     }
 
@@ -78,7 +78,7 @@ public class VaccineEntity {
         this.dosesRequired = dosesRequired;
     }
 
-    public void setDoseInterval(int doseInterval) {
+    public void setDoseInterval(Integer doseInterval) {
         this.doseInterval = doseInterval;
     }
 

@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/patients")
+@RequestMapping("/api/v1/patients")
 public class PatientController {
     //Field
     private final PatientService patientService;
@@ -23,12 +23,12 @@ public class PatientController {
     /**
      * This method calls the service to get the list of patient, where the default value is 0, so users do not always have
      * to send a value. The @GetMapping does not need a path, since the base URL interprets that we are page of patients.
-     * @param page the current page
+     * @param currentPage the current page
      * @return the status and patientDTO
      */
     @GetMapping
-    public ResponseEntity<PatientPageResponseDTO> listPatients(@RequestParam(defaultValue = "0") int page){
-        return ResponseEntity.ok(patientService.listPatients(page));
+    public ResponseEntity<PatientPageResponseDTO> listPatients(@RequestParam(defaultValue = "0") int currentPage){
+        return ResponseEntity.ok(patientService.listPatients(currentPage));
     }
 
     /**
@@ -52,6 +52,8 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<PatientResponseDTO> registerPatient(@Valid @RequestBody PatientRequestDTO patient){
         return ResponseEntity.status(HttpStatus.CREATED).body(patientService.registerPatient(patient));
+        //TODO verify user does not exist
+        //TODO verify phone number is valid, not just a single character
     }
 
     /**

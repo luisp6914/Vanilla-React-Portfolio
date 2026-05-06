@@ -18,7 +18,7 @@ public class PatientEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="phone")
+    @Column(name="phone_number")
     private String phone;
 
     @Column(name="email")

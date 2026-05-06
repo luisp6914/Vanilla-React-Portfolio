@@ -27,15 +27,15 @@ public class VaccineService {
 
     /**
      * This method paginates the vaccines by getting the list of vaccines, the number of pages, and the current page.
-     * @param pageNumber the current page
+     * @param currentPage the current page
      * @return returns the list of vaccines as DTOs, the number of pages, and the current page.
      */
     @Transactional(readOnly = true)
-    public VaccinePageResponseDTO listVaccines(int pageNumber){
+    public VaccinePageResponseDTO listVaccines(int currentPage){
         int PAGE_SIZE = 15;
 
         //Pageable is the interface and PageRequest is the class that implements Pageable
-        Pageable limitAndOffset = PageRequest.of(pageNumber, PAGE_SIZE);
+        Pageable limitAndOffset = PageRequest.of(currentPage, PAGE_SIZE);
 
         //returned the current page of vaccines
         Page<VaccineEntity> page = vaccineRepository.findAll(limitAndOffset);
