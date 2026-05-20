@@ -1,4 +1,4 @@
-import { Icon } from "@iconify-icon/react";
+import { Icon } from "@iconify/react";
 import { useEffect, useRef } from "react";
 
 type Skill = {
@@ -40,7 +40,7 @@ const SkillCategory = ({title, skills, className, reverse = false} : Props) => {
 
     return(
         <div ref={categoryRef} className={`flex flex-col gap-5 ${className}`}>
-            <h3 className="text-3xl font-bold bg-linear-to-r from-[#7AA6F7] to-violet-500 bg-clip-text text-transparent">{title}</h3>
+            <h3 className={`text-3xl font-bold ${reverse ? "bg-linear-to-r" : "bg-linear-to-l"} from-[#7AA6F7] to-violet-500 bg-clip-text text-transparent`}>{title}</h3>
             <div className={`flex gap-8 overflow-scroll overflow-y-hidden scrollbar-hide ${reverse ? "flex-row-reverse" : ""}`}>
                 {skills.map((card) => (
                     <div key={"card-" + card.icon + title} className={`flex flex-col gap-5 border rounded-2xl border-transparent bg-[#F2F2F2] p-5 md:w-75 shrink-0 ${reverse ? "last:ml-8" : "last:mr-8"}`}>

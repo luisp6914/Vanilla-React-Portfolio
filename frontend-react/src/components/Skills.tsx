@@ -45,12 +45,12 @@ const Skills = () => {
     
 
     return(
-        <section className="mt-[25dvh]">
-            <h3 className="text-[clamp(2rem,3dvw,3rem)] text-[#656565] text-center">Skills</h3>
+        <section className="mt-[25dvh] scroll-mt-20" id="skills">
+            <h3 className="text-[clamp(2rem,3dvw,3rem)] font-bold text-center">Skills</h3>
             <div className="flex flex-col gap-20">
                 <SkillCategory title={"FRONTEND"} skills={frontendSkills} className="pl-8"></SkillCategory>
 
-                <SkillCategory title={"Backend"} skills={backendSkills} className="pr-8 text-end" reverse></SkillCategory>
+                <SkillCategory title={"BACKEND"} skills={backendSkills} className="pr-8 text-end" reverse></SkillCategory>
 
                 <SkillCategory title={"DevOps & CLOUD"} skills={devOpsCloud} className="pl-8"></SkillCategory>
             </div>

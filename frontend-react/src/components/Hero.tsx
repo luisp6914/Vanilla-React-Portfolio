@@ -13,7 +13,7 @@ const Hero = () => {
     },[]);
 
     return(
-        <section className="relative h-screen overflow-hidden">
+        <section className="relative h-screen overflow-hidden" id="hero">
             <img className="absolute inset-0 w-full h-full object-cover" src={hero} alt="hero background" onLoad={() => setImageLoaded(true)}/>
             <div className={`relative z-10 flex flex-col items-center justify-center h-full pt-[25%] ${imageLoaded && revealText}`}>
                 <h1 className="font-bold text-[clamp(2rem,4.5dvw,6.5rem)]">Hi, I'm Luis</h1>

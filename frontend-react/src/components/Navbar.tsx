@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Navigation } from "../types/navigation";
-import {Icon} from "@iconify-icon/react"
+import {Icon} from "@iconify/react"
 import { useState } from "react";
 
 interface Props {
@@ -9,6 +9,15 @@ interface Props {
 
 const Navbar = ({navigator} : Props) => {
     const [isOpen, setIsOpen] = useState<Boolean>(false);
+
+    const handleAnchorClick = (e : React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+
+        const target = document.querySelector(href);
+
+        target?.scrollIntoView({behavior: "smooth"});
+        setIsOpen(false);
+    }
 
     return(
         <nav className="fixed top-0 left-0 w-full z-50 bg-[#F5F5F6]/75 backdrop-blur-sm">
@@ -35,7 +44,7 @@ const Navbar = ({navigator} : Props) => {
                     {navigator.map((path, index) => (
                         <li key={index}>
                             {path.type === "anchor" ?
-                                <a href={path.href}>{path.label}</a> :
+                                <a href={path.href} onClick={(e) => {handleAnchorClick(e, path.href)}}>{path.label}</a> :
                                 <Link to={path.to}>{path.label}</Link>
                             }
                         </li>
@@ -49,7 +58,7 @@ const Navbar = ({navigator} : Props) => {
                     {navigator.map((path, index) => (
                         <li key={index}>
                             {path.type === "anchor" ?
-                                <a href={path.href}>{path.label}</a> :
+                                <a href={path.href} onClick={(e) => {handleAnchorClick(e, path.href)}}>{path.label}</a> :
                                 <Link to={path.to}>{path.label}</Link>
                             }
                         </li>

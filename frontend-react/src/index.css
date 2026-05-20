@@ -31,6 +31,7 @@ input, button, textarea, select {
   isolation: isolate;
 }
 
+/*setting default font*/
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
@@ -48,6 +49,20 @@ input, button, textarea, select {
     display: none;
   }
 }
+
+/*Setting the floating labels*/
+/* @layer components {
+  .float-label input:focus ~ label,
+  .float-label input:not(:placeholder-shown) ~ label,
+  .float-label textarea:focus ~ label,
+  .float-label textarea:not(:placeholder-shown) ~ label {
+    top: -10;
+    font-size: .7rem;
+    color: #7AA6F7;
+    
+    padding: 0 4px;
+  }
+} */
 
 /*Animating the skills*/
 @theme {
