@@ -8,7 +8,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 
 const Home = () => {
-    const test : Navigation[] = [
+    const nav : Navigation[] = [
         {type: "anchor", href: "#hero", label: "Home"},
         {type: "anchor", href: "#about", label: "About"},
         {type: "anchor", href: "#skills", label: "Skills"},
@@ -18,7 +18,7 @@ const Home = () => {
 
     return(
         <div className="flex flex-col gap-20">
-            <Navbar navigator={test} ></Navbar>
+            <Navbar navigator={nav} ></Navbar>
             <Hero></Hero>
             <About></About>
             <Skills></Skills>

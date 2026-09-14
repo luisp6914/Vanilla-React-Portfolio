@@ -16,8 +16,8 @@ const Projects = () => {
             type: "link",
             icon: "simple-icons:digikeyelectronics",
             name: "DigiKey API", 
-            caption: "A React app for searching electronic components by category or keyword via the DigiKey API, with secure token-based authentication.", 
-            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "flowbite:api-key-outline", "ix:json-document-filled"], 
+            caption: "A React app for searching electronic components by category or keyword using the DigiKey API, with secure token-based authentication handled through an Express backend proxy to protect API credentials.", 
+            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "skill-icons:expressjs-dark", "flowbite:api-key-outline", "bi:filetype-json"], 
             path: "/digikey-api"
         },
         {
@@ -25,7 +25,7 @@ const Projects = () => {
             icon: "majesticons:covid", 
             name: "VaxTrack Hub", 
             caption: "A hospital vaccination management system for tracking patients and vaccines, built with a React frontend and a Spring Boot REST API backend.", 
-            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "arcticons:api-tester", "ix:json-document-filled"], 
+            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json"], 
             path: "/vax-track"
         },
         {
@@ -33,7 +33,7 @@ const Projects = () => {
             icon: "fa-solid:shopping-cart", 
             name: "PC Part Picker", 
             caption: "An interface for selecting and pricing PC components, powered by a Spring Boot REST API that handles part selection, removal, and cost calculation.", 
-            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "arcticons:api-tester", "ix:json-document-filled"], 
+            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json"], 
             path: "/pc-part-picker"
         },
         {
