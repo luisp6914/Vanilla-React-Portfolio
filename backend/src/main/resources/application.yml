@@ -1,9 +1,40 @@
 spring:
   application:
     name: covid-backend
+
+  main:
+    lazy-initialization: true
+    banner-mode: "off"
+
+  jmx:
+    enabled: false
+
   datasource:
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 1
+      initialization-fail-timeout: -1
+      connection-timeout: 30000
+
   jpa:
-    show-sql: true
+    open-in-view: false
+    show-sql: ${SHOW_SQL:false}
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  tomcat:
+    threads:
+      max: 20
+      min-spare: 2
+
+logging:
+  level:
+    root: WARN
+    com.portfolio.backend: INFO
+    org.springframework.boot.web.embedded.tomcat: INFO
