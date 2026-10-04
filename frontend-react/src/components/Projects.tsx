@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type Projects = {
     type: "anchor" | "link";
