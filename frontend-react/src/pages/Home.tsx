@@ -6,6 +6,7 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import { useEffect } from "react";
 
 const Home = () => {
     const nav : Navigation[] = [
@@ -15,6 +16,15 @@ const Home = () => {
         {type: "anchor", href: "#projects", label: "Projects"},
         {type: "anchor", href: "#contact", label: "Contact"},
     ];
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_VACCINE_BASE_URL}`).catch(() => {
+            // Ignore errors: this request only exists to wake the vaxTrack backend
+        });
+        fetch("https://digikey-backend.onrender.com/categories").catch(() => {
+            // Ignore errors: this request only exists to wake the Digikey backend
+        });
+    }, [])
 
     return(
         <div className="flex flex-col gap-20">
