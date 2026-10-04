@@ -7,8 +7,10 @@ import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -63,6 +65,39 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidRestockAmountException.class)
     public ResponseEntity<ExceptionResponseDTO> handleInvalidRestockAmountException(InvalidRestockAmountException ex, HttpServletRequest request){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionResponseDTO.fromException(ex.getMessage(), HttpStatus.BAD_REQUEST, request.getRequestURI()));
+    }
+
+    @ExceptionHandler(UserExistsException.class)
+    public ResponseEntity<ExceptionResponseDTO> handleUserExistsException(UserExistsException ex, HttpServletRequest request){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ExceptionResponseDTO.fromException(ex.getMessage(), HttpStatus.CONFLICT, request.getRequestURI()));
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ExceptionResponseDTO> handleMissingRequestParam(MissingServletRequestParameterException ex, HttpServletRequest request) {
+
+        String message;
+
+        if ("restockAmount".equals(ex.getParameterName())) {
+            message = "Restock amount must be provided";
+        } else {
+            message = ex.getParameterName() + " must be provided";
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionResponseDTO.fromException(message, HttpStatus.BAD_REQUEST, request.getRequestURI()));
+    }
+
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ExceptionResponseDTO> handleTypeMismatch(MethodArgumentTypeMismatchException ex, HttpServletRequest request) {
+        String message;
+
+        if ("restockAmount".equals(ex.getName()) && "".equals(ex.getValue())) {
+            message = "Restock amount must be provided";
+        } else {
+            message = "Invalid value for parameter: " + ex.getName();
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionResponseDTO.fromException(message, HttpStatus.BAD_REQUEST, request.getRequestURI()));
     }
 
 

@@ -11,6 +11,7 @@ import com.portfolio.backend.repository.VaccineRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +36,7 @@ public class VaccineService {
         int PAGE_SIZE = 15;
 
         //Pageable is the interface and PageRequest is the class that implements Pageable
-        Pageable limitAndOffset = PageRequest.of(currentPage, PAGE_SIZE);
+        Pageable limitAndOffset = PageRequest.of(currentPage, PAGE_SIZE, Sort.by("id").ascending());
 
         //returned the current page of vaccines
         Page<VaccineEntity> page = vaccineRepository.findAll(limitAndOffset);
@@ -103,7 +104,6 @@ public class VaccineService {
         );
 
         if(restockAmount < 1) throw new InvalidRestockAmountException("Restock amount must be more than 0");
-
         vaccine.setQuantityRemaining(vaccine.getQuantityRemaining() + restockAmount);
         vaccine.setTotalDosesReceived(vaccine.getTotalDosesReceived() + restockAmount);
 

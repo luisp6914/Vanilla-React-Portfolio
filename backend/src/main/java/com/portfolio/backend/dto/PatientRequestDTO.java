@@ -1,10 +1,8 @@
 package com.portfolio.backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 
@@ -17,6 +15,8 @@ public class PatientRequestDTO {
     private String lastName;
 
     @NotBlank(message = "Phone number is required")
+    @Size(min = 10, max = 15, message = "Phone number must be 10 digits")
+    @Pattern(regexp = "^\\d+$", message = "Phone number must contain only numeric digits")
     private String phoneNumber;
 
     @Email(message = "Email must be valid")

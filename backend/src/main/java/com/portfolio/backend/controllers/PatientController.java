@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/patients")
+@CrossOrigin(origins = "http://localhost:5173")
 public class PatientController {
     //Field
     private final PatientService patientService;
@@ -52,8 +53,6 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<PatientResponseDTO> registerPatient(@Valid @RequestBody PatientRequestDTO patient){
         return ResponseEntity.status(HttpStatus.CREATED).body(patientService.registerPatient(patient));
-        //TODO verify user does not exist
-        //TODO verify phone number is valid, not just a single character
     }
 
     /**

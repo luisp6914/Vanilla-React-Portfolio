@@ -40,7 +40,7 @@ const Navbar = ({navigator} : Props) => {
                     />
                 </button>
 
-                <ul className="hidden gap-5 ml-auto md:flex">
+                <ul className="hidden gap-5 md:flex">
                     {navigator.map((path, index) => (
                         <li key={index}>
                             {path.type === "anchor" ?

@@ -8,6 +8,7 @@ type Projects = {
     caption: string;
     buildStack: string[];
     path: string;
+    finished: boolean;
 }
 
 const Projects = () => {
@@ -18,23 +19,26 @@ const Projects = () => {
             name: "DigiKey API", 
             caption: "A React app for searching electronic components by category or keyword using the DigiKey API, with secure token-based authentication handled through an Express backend proxy to protect API credentials.", 
             buildStack: ["skill-icons:react-light", "skill-icons:typescript", "skill-icons:expressjs-dark", "flowbite:api-key-outline", "bi:filetype-json"], 
-            path: "/digikey-api"
+            path: "/digikey-api",
+            finished: true
         },
         {
             type: "link",
             icon: "majesticons:covid", 
-            name: "VaxTrack Hub", 
+            name: "VaxTrack", 
             caption: "A hospital vaccination management system for tracking patients and vaccines, built with a React frontend and a Spring Boot REST API backend.", 
-            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json"], 
-            path: "/vax-track"
+            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json", "devicon:postman"], 
+            path: "/vax-track/dashboard",
+            finished: true
         },
         {
             type: "link",
             icon: "fa-solid:shopping-cart", 
             name: "PC Part Picker", 
             caption: "An interface for selecting and pricing PC components, powered by a Spring Boot REST API that handles part selection, removal, and cost calculation.", 
-            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json"], 
-            path: "/pc-part-picker"
+            buildStack: ["skill-icons:react-light", "skill-icons:typescript", "devicon:java-wordmark", "logos:spring-icon", "logos:docker-icon", "eos-icons:api-outlined", "bi:filetype-json", "devicon:postman"], 
+            path: "/pc-part-picker",
+            finished: false
         },
         {
             type: "anchor",
@@ -42,7 +46,8 @@ const Projects = () => {
             name: "Image Merger", 
             caption: "A vanilla JavaScript app that lets users select two images and merge them into one using DOM manipulation.", 
             buildStack: ["logos:html-5", "vscode-icons:file-type-css", "logos:javascript"], 
-            path: "https://luisp6914.github.io/Merge-Images/"
+            path: "https://luisp6914.github.io/Merge-Images/",
+            finished: false
         },
     ]
 
@@ -66,9 +71,15 @@ const Projects = () => {
 
                         <div className="shrink-0">
                             {project.type === "link" ? (
-                                    <Link to={project.path} className="text-blue-300 hover:text-blue-600 transition duration-200">
-                                        <Icon icon="tabler:arrow-up-right" width="30" height="30" />
-                                    </Link>
+                                    <div className="">
+                                        {project.finished ? (
+                                            <Link to={project.path} className="text-blue-300 hover:text-blue-600 transition duration-200">
+                                                <Icon icon="tabler:arrow-up-right" width="30" height="30" />
+                                            </Link>
+                                        ) : (
+                                            <p className="bg-amber-500 text-slate-950 text-xs font-bold px-5 py-1.5 text-center shadow-md uppercase tracking-wider">In progress</p>
+                                        )}
+                                    </div>
                                 ) : (
                                     <a href={project.path} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-600 transition duration-200">
                                         <Icon icon="tabler:arrow-up-right" width="30" height="30" />

@@ -7,7 +7,8 @@ import java.time.LocalDate;
 public class PatientResponseDTO {
     //Data Fields
     private int id;
-    private String patientName;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
     private String email;
     private String gender;
@@ -15,6 +16,7 @@ public class PatientResponseDTO {
     private LocalDate dose1;
     private LocalDate dose2;
     private String vaccineName;
+    private int dosesRequired;
 
     //Default constructor
     public PatientResponseDTO(){}
@@ -23,7 +25,8 @@ public class PatientResponseDTO {
     public static PatientResponseDTO fromEntity(PatientEntity patient){
         PatientResponseDTO dto = new PatientResponseDTO();
         dto.id = patient.getId();
-        dto.patientName = patient.getFirstName() + " " + patient.getLastName();
+        dto.firstName = patient.getFirstName();
+        dto.lastName = patient.getLastName();
         dto.phoneNumber = patient.getPhone();
         dto.email = patient.getEmail();
         dto.gender = patient.getGender();
@@ -31,6 +34,7 @@ public class PatientResponseDTO {
         dto.dose1 = patient.getDose1();
         dto.dose2 = patient.getDose2();
         dto.vaccineName = (patient.getVaccine() != null && patient.getVaccine().getVaccineName() != null) ? patient.getVaccine().getVaccineName() : "";
+        dto.dosesRequired = (patient.getVaccine() != null) ? patient.getVaccine().getDosesRequired() : -1;
 
         return dto;
     }
@@ -39,9 +43,10 @@ public class PatientResponseDTO {
     public int getId(){
         return id;
     }
-    public String getPatientName() {
-        return patientName;
-    }
+
+    public String getFirstName(){return firstName;}
+
+    public String getLastName(){return lastName;}
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -70,4 +75,6 @@ public class PatientResponseDTO {
     public String getVaccineName() {
         return vaccineName;
     }
+
+    public int getDosesRequired(){return dosesRequired;}
 }

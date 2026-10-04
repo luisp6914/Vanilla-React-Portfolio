@@ -8,14 +8,16 @@ public class VaccineRequestDTO {
     private String name;
 
     @PositiveOrZero(message = "Dose Interval must be at least 0")
+    @NotNull(message = "Dose interval field can not be empty")
     private Integer doseInterval;
 
     @Min(value = 1, message = "At least one item is required for initial stock")
     private int dosesReceived;
 
+    @NotNull(message = "Doses required is required")
     @Min(value = 1, message = "Requires at least one dose")
     @Max(value = 2, message = "Can not require more than two doses")
-    private int dosesRequired;
+    private Integer dosesRequired;
 
 
     public VaccineRequestDTO(){}
@@ -33,7 +35,7 @@ public class VaccineRequestDTO {
         return dosesReceived;
     }
 
-    public int getDosesRequired() {
+    public Integer getDosesRequired() {
         return dosesRequired;
     }
 
@@ -42,7 +44,7 @@ public class VaccineRequestDTO {
         this.name = name;
     }
 
-    public void setDoseInterval(int doseInterval) {
+    public void setDoseInterval(Integer doseInterval) {
         this.doseInterval = doseInterval;
     }
 
@@ -50,7 +52,7 @@ public class VaccineRequestDTO {
         this.dosesReceived = dosesReceived;
     }
 
-    public void setDosesRequired(int dosesRequired) {
+    public void setDosesRequired(Integer dosesRequired) {
         this.dosesRequired = dosesRequired;
     }
 }

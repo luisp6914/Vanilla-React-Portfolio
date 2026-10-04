@@ -11,6 +11,7 @@ import com.portfolio.backend.repository.VaccineRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,7 @@ public class PatientService {
     public PatientPageResponseDTO listPatients(int pageNumber){
         int PAGE_SIZE = 15;
 
-        Pageable limitAndOffset = PageRequest.of(pageNumber, PAGE_SIZE);
+        Pageable limitAndOffset = PageRequest.of(pageNumber, PAGE_SIZE, Sort.by("id").ascending());
 
         Page<PatientEntity> page = patientRepository.findAll(limitAndOffset);
 
@@ -95,6 +96,8 @@ public class PatientService {
         );
 
         if(vaccine.getQuantityRemaining() <= 0) throw new NoDosesRemainingException("There are no doses remaining for " + vaccine.getVaccineName() + " Vaccine");
+        if(patientRepository.existsByPhone(patientRequest.getPhoneNumber())) throw new UserExistsException("User already exists with phone number:" + patientRequest.getPhoneNumber());
+        if(patientRepository.existsByEmail(patientRequest.getEmail())) throw new UserExistsException(("User already exists with email: " + patientRequest.getEmail()));
 
         vaccine.setQuantityRemaining(vaccine.getQuantityRemaining() - 1);
 

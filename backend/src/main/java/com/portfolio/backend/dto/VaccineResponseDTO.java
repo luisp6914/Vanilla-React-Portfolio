@@ -27,6 +27,7 @@ public class VaccineResponseDTO {
     }
 
     //Response DTO only needs getters
+    public int getId(){return id;}
     public String getVaccineName() {
         return vaccineName;
     }

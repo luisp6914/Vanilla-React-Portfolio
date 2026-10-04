@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/vaccines")
+@CrossOrigin(origins = "http://localhost:5173")
 public class VaccineController {
     //Field
     private final VaccineService vaccineService;
