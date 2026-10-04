@@ -32,6 +32,10 @@ server:
     threads:
       max: 20
       min-spare: 2
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+
 
 logging:
   level:
